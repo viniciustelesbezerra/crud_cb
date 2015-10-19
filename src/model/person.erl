@@ -1,0 +1,2 @@
+-module(person, [Id, FirstName, LastName, Age, Bio]).
+-compile(export_all).

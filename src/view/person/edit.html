@@ -1,0 +1,13 @@
+person -> {{ person }}
+
+Edit form
+
+<form action="/person/updating" method="post">
+  id <input readonly="readonly" type="text" name="id" value="{{ person.id }}" />
+  first name <input type="text" name="first_name" value="{{ person.first_name }}" />
+  last name <input type="text" name="last_name" value="{{ person.last_name }}" />
+  age <input type="text" name="age" value="{{ person.age }}" />
+  bio <input type="text" name="bio" value="{{ person.bio }}" />
+
+  <input type="submit" value="update" />
+</form>

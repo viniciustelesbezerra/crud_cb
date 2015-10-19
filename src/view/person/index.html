@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+<a href="{% url action="new" %}">
+  New
+</a>
+
+<table>
+
+  {% for person in persons %}
+
+    <tr>
+
+      <td>
+        {{ person }}
+      </td>
+
+      <td>
+        <a href="{% url action="show" id=person.id %}">
+          Show
+        </a>
+      </td>
+
+      <td>
+        <a href="{% url action="edit" id=person.id %}">
+          Edit
+        </a>
+      </td>
+
+      <td>
+        <a href="{% url action="destroy" id=person.id %}">
+          Destroy
+        </a>
+      </td>
+
+    </tr>
+
+  {% endfor %}
+
+</table>
+
+{% endblock %}
