@@ -28,20 +28,17 @@ fetch_person(Id) ->
   {ok, [{person, Person}]}.
 
 create_person() ->
-  FirstName = Request:param("first_name"),
-  LastName = Request:param("last_name"),
-  {Age, _} = string:to_integer(Request:param("age")),
-  Bio = Request:param("bio"),
-
-  Person = person:new(id, FirstName, LastName, Age, Bio),
+  Person = person:new(id,
+    Request:param("first_name"),
+    Request:param("last_name"),
+    string:to_integer(Request:param("age")),
+    Request:param("bio")),
   Person:save().
 
 update_person() ->
-  {Age, _} = string:to_integer(Request:param("age")),
-
   Person = boss_db:find(Request:param("id")),
   New = Person:set([{first_name, Request:param("first_name")},
     {last_name, Request:param("last_name")},
-    {age, Age},
+    {age, string:to_integer(Request:param("age"))},
     {bio, Request:param("bio")}]),
   New:save().
